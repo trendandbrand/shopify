@@ -1,0 +1,10 @@
+streamlit
+pandas
+requests
+beautifulsoup4
+playwright
+sqlalchemy
+psycopg2-binary
+python-dotenv
+openpyxl
+lxml
