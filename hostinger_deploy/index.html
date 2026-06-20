@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Product2Shopify AI - Convert Product Links to Shopify Import CSV</title>
+    <meta name="title" content="Product2Shopify AI - Convert Product Links to Shopify Import CSV">
+    <meta name="description" content="Generate Shopify import-ready product CSV/Excel sheets from any product link. Automatically scrape Amazon, supplier pages, rewrite product content with AI, calculate margins, and generate SKUs.">
+    <meta name="keywords" content="Shopify CSV generator, product importer Shopify, Amazon to Shopify, supplier product scraper, ecomtool, ecomtool.online, ecommerce automation, Shopify catalog builder, bulk product creator">
+    <meta name="author" content="Trend & Brand">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ecomtool.online/">
+
+    <!-- Open Graph / Facebook (Social Media SEO) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ecomtool.online/">
+    <meta property="og:title" content="Product2Shopify AI - Shopify Catalog Builder">
+    <meta property="og:description" content="Instantly convert product URLs from Amazon, eBay, or suppliers into import-ready Shopify CSV sheets. Save hours on manual listings.">
+    <meta property="og:image" content="https://ecomtool.online/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ecomtool.online/">
+    <meta property="twitter:title" content="Product2Shopify AI - Shopify Catalog Builder">
+    <meta property="twitter:description" content="Convert Amazon, eBay, and supplier links to shopify CSVs. Features automated AI rewrites, SKU generation, and margin calculators.">
+    <meta property="twitter:image" content="https://ecomtool.online/og-image.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Premium Styling -->
+    <style>
+        :root {
+            --bg-color: #090d16;
+            --card-bg: #111827;
+            --primary: #8b5cf6;
+            --primary-hover: #7c3aed;
+            --secondary: #6366f1;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --gradient: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-hover);
+        }
+
+        /* Typography & Layout Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(9, 13, 22, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: var(--border-color) 1px solid;
+            padding: 16px 0;
+            transition: all 0.3s;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            font-size: 1.75rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .btn-launch {
+            background: var(--gradient);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+            transition: all 0.2s;
+        }
+
+        .btn-launch:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 40%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.1);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        /* App Container Wrapper */
+        .app-window {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 92, 246, 0.1);
+            margin: 0 auto 100px;
+            overflow: hidden;
+            max-width: 1300px;
+        }
+
+        .window-bar {
+            background: #151d30;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .window-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .window-dot.red { background-color: #ef4444; }
+        .window-dot.yellow { background-color: #f59e0b; }
+        .window-dot.green { background-color: #10b981; }
+
+        .window-title {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 800px;
+            position: relative;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            border-top: var(--border-color) 1px solid;
+            background: linear-gradient(180deg, var(--bg-color) 0%, #0d1220 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .feature-icon {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            border-top: var(--border-color) 1px solid;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            margin-bottom: 16px;
+            padding: 24px;
+        }
+
+        .faq-item h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .faq-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #060910;
+            border-top: var(--border-color) 1px solid;
+            padding: 60px 0 30px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            max-width: 320px;
+        }
+
+        .footer-brand p {
+            margin-top: 16px;
+            font-size: 0.85rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 60px;
+        }
+
+        .links-col h4 {
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .links-col ul {
+            list-style: none;
+        }
+
+        .links-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .links-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .links-col ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            border-top: rgba(255, 255, 255, 0.05) 1px solid;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom a {
+            color: #a78bfa;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-bottom a:hover {
+            color: #c084fc;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            .iframe-container {
+                height: 600px;
+            }
+            .footer-grid {
+                flex-direction: column;
+            }
+            .footer-links {
+                gap: 40px;
+            }
+        }
+    </style>
+
+    <!-- Schema Markup JSON-LD (Search Engine Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Product2Shopify AI",
+      "operatingSystem": "All",
+      "applicationCategory": "BusinessApplication",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "genre": "eCommerce Catalog Creator",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Trend & Brand",
+        "url": "https://www.trendandbrands.com/"
+      },
+      "description": "Convert any product link (Amazon, eBay, suppliers) into import-ready Shopify CSV & Excel sheets. Includes automated AI content rewriting, margin calculation, and image management."
+    }
+    </script>
+</head>
+<body>
+
+    <!-- Sticky Navigation -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <span>🛍️</span> Product2Shopify AI
+            </a>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#faq">FAQ</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="#app" class="btn-launch">Launch App</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Area -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-tag">Automated Shopify CSV & Catalog Builder</div>
+            <h1>Generate Shopify-Ready Import Sheets<br>From Any Product URL</h1>
+            <p>Paste Amazon, eBay, or wholesale supplier links. Automatically extract details, rewrite product copy using AI, generate SKUs, calculate profits, and download structured Shopify CSVs.</p>
+            <a href="#app" class="btn-launch" style="padding: 14px 28px; font-size: 1rem;">Start Scrape & Export Free</a>
+        </div>
+    </section>
+
+    <!-- Interactive App Iframe Mockup Window -->
+    <section id="app" class="container" style="padding-bottom: 60px;">
+        <div class="app-window">
+            <div class="window-bar">
+                <div class="window-dots">
+                    <span class="window-dot red"></span>
+                    <span class="window-dot yellow"></span>
+                    <span class="window-dot green"></span>
+                </div>
+                <div class="window-title">Product2Shopify AI Dashboard — ecomtool.online</div>
+                <div style="width: 42px;"></div> <!-- Spacer -->
+            </div>
+            <div class="iframe-container">
+                <!-- IMPORTANT: Replace with your deployed Streamlit Community Cloud URL -->
+                <!-- e.g. https://your-streamlit-app.streamlit.app/?embed=true -->
+                <iframe src="https://ecomtool-online.streamlit.app/?embed=true" allow="clipboard-write"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Engineered For Global eCommerce Growth</h2>
+                <p>Equipped with a suite of automated catalog tools to save you time and optimize listing conversions.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📥</div>
+                    <h3>Multi-URL Import Scraper</h3>
+                    <p>Extract title, description, pricing, and images from product links with basic parsing capabilities. Keep details safe from scraper blocks with manual overrides.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <h3>AI Copywriting Rewrite</h3>
+                    <p>Prevent copyright blocks. Automatically rewrite scraped descriptions and product titles into unique, SEO-optimized content using the built-in paraphraser.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Tags & SEO Generator</h3>
+                    <p>Automatically structure page titles and meta descriptions under recommended search engine character limits (70 & 160 characters) to index globally.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏷️</div>
+                    <h3>Smart SKU Creator</h3>
+                    <p>Format unique SKUs using custom prefix, category tags, and counters. Built-in database check ensures zero double-entry errors for inventory sync.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h3>Margin & Price Calculator</h3>
+                    <p>Compute cost of goods, transaction fees, and shipping costs. Apply desired markup percentages globally to calculate target sell pricing and Shopify comparison pricing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📤</div>
+                    <h3>One-Click CSV Exporter</h3>
+                    <p>Exports 100% compliant CSV sheets formatted exactly for Shopify Import engine, creating sub-rows representing multiple images in their logical sequence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about using our Shopify import assistant tool.</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Is it safe to scrape Amazon product links?</h3>
+                    <p>Scraping details for private use is standard practice. However, our app warns you against copying copyrighted images or texts blindly. We recommend utilizing our auto-rewrite engine and setting authorized product photos.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I import the generated CSV sheet into Shopify?</h3>
+                    <p>Simply export the CSV from the app, open your Shopify Admin, click on 'Products', select 'Import', choose your file, and hit upload. The file matches Shopify's native multi-image mapping rules.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Does this app save my API keys or supplier data?</h3>
+                    <p>No, configurations and imported listings are stored inside your secure local app database environment, ensuring complete data sovereignty and privacy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo"><span>🛍️</span> Product2Shopify AI</a>
+                    <p>Automate your Shopify product lists. Turn any web product listing into a clean, search-optimized inventory file in seconds.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="links-col">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#app">Launch Tool</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="links-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="https://www.trendandbrands.com/" target="_blank">Trend & Brand</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Trend & Brand. All rights reserved.</span>
+                <span>Powered by <a href="https://www.trendandbrands.com/" target="_blank">Trend & Brand</a></span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
